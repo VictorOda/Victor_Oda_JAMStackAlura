@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     /* New styles */
     display: flex;
     flex-direction: column;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Fira Sans Condensed', sans-serif;
     // Deixa branco no começo
     color: #292F35;
   }
@@ -29,7 +29,11 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: '#0070f3',
+    primary: '#00C2DA',
+    background: '#292F35',
+    header: '#141517',
+    text: '#FFF',
+    contrastBackground: '#5B6167',
   },
 };
 
@@ -39,7 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>&lt;oda /&gt;</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400;700;900&family=Fira+Sans:wght@400&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400;500;700;900&family=Fira+Sans:wght@400&display=swap" rel="stylesheet" />
       </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
