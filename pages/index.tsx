@@ -1,11 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`;
+import About from '../src/components/about';
+import Contact from '../src/components/contact';
+import Cover from '../src/components/cover';
+import Footer from '../src/components/footer';
+import Header from '../src/components/header';
+import Projects from '../src/components/projects';
 
 export default function Home() {
-  return <Title>My page</Title>;
+  return (
+    <div>
+      <Cover />
+      <Header />
+      <Projects />
+      <About />
+      <Contact />
+      <Footer />
+    </div>
+  );
 }
