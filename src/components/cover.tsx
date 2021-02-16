@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTyped from 'react-typed';
 import styled from 'styled-components';
 
 const WrapperCover = styled.div`
@@ -41,12 +42,21 @@ const Code = styled.span`
 `;
 
 export default function Cover() {
+  const typedOptions = {
+    typeSpeed: 50,
+    cursorChar: '_',
+  };
+
   return (
     <div>
-      <WrapperCover>
+      <WrapperCover id="cover">
         <Title>/portfolio</Title>
-        <Name>Victor Oda.</Name>
-        <Job>Software Engineer_</Job>
+        <Name>
+          Victor Oda.
+        </Name>
+        <Job>
+          <ReactTyped strings={['Software Engineer']} {...typedOptions} startDelay={500} />
+        </Job>
         <Code>
           &lt;p class=&quot;font&quot;&gt;
           <br />
