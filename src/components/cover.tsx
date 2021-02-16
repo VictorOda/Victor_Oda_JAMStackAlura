@@ -43,7 +43,7 @@ const Code = styled.span`
 export default function Cover() {
   return (
     <div>
-      <WrapperCover>
+      <WrapperCover id="cover">
         <Title>/portfolio</Title>
         <Name>Victor Oda.</Name>
         <Job>Software Engineer_</Job>
