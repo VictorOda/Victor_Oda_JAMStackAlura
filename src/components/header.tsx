@@ -6,25 +6,27 @@ const WrapperHeader = styled.section`
   height: 80px;
 `;
 
-const Navbar = styled.nav`
+const Navbar = styled.nav<{isSticky: boolean}>`
   background-color: ${({ theme }) => theme.colors.header};
   border-top: 2px solid ${({ theme }) => theme.colors.primary};
   width: 100vw;
   height: 80px;
-`;
-
-const StickyNavbar = styled.nav`
-  background-color: ${({ theme }) => theme.colors.header};
-  border-top: 2px solid ${({ theme }) => theme.colors.primary};
-  width: 100vw;
-  height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  
+  ${(prop) => {
+    if (prop.isSticky) {
+      return `
+        position: fixed;
+        top: 0;
+        left: 0;
+      `;
+    }
+    return '';
+  }}
 `;
 
 export default function Header() {
   const [isSticky, setSticky] = useState(false);
+
   useEffect(() => {
     const onScroll = () => {
       const topBorder = document.getElementById('navbar-container').getBoundingClientRect().top;
@@ -42,7 +44,9 @@ export default function Header() {
 
   return (
     <WrapperHeader id="navbar-container">
-      {isSticky ? <StickyNavbar /> : <Navbar />}
+      <Navbar isSticky={isSticky}>
+        Test
+      </Navbar>
     </WrapperHeader>
   );
 }
