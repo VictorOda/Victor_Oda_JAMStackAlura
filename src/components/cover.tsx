@@ -10,6 +10,8 @@ const WrapperCover = styled.div`
   display: flex;
   flex: wrap;
   flex-direction: column;
+  justify-content: space-between;
+
   ${breakpointsMedia({
     xs: css`
       padding: 18px;
@@ -32,6 +34,11 @@ const SectionTitle = styled.span`
       font-weight: ${({ theme }) => theme.typographyVariants.sectionTitle.fontWeight};
     `,
   })}
+`;
+
+const WrapperTitle = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Name = styled.span` 
@@ -72,10 +79,14 @@ const Code = styled.span`
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.mediumXS.fontSize};
       font-weight: ${({ theme }) => theme.typographyVariants.mediumXS.fontWeight};
+      margin-left: 98px;
+      margin-bottom: 36px;
     `,
     md: css`
       font-size: ${({ theme }) => theme.typographyVariants.medium.fontSize};
       font-weight: ${({ theme }) => theme.typographyVariants.medium.fontWeight};
+      margin-left: 196px;
+      margin-bottom: 72px;
     `,
   })}
 `;
@@ -90,12 +101,14 @@ export default function Cover() {
     <div>
       <WrapperCover>
         <SectionTitle>/portfolio</SectionTitle>
-        <Name>
-          Victor Oda.
-        </Name>
-        <Job>
-          <ReactTyped strings={['Software Engineer']} {...typedOptions} startDelay={500} />
-        </Job>
+        <WrapperTitle>
+          <Name>
+            Victor Oda.
+          </Name>
+          <Job>
+            <ReactTyped strings={['Software Engineer']} {...typedOptions} startDelay={500} />
+          </Job>
+        </WrapperTitle>
         <Code>
           &lt;p class=&quot;font&quot;&gt;
           <br />
