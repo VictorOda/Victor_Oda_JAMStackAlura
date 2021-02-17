@@ -51,13 +51,15 @@ const FeaturedProject = styled.div`
 
 const Screenshot = styled.img`
   cursor: pointer;
-  height: auto;
+  
   ${breakpointsMedia({
     xs: css`
-      width: auto;
+      width: 100%;
+      height: fit-content;
     `,
     md: css`
       width: 60%;
+      height: auto;
     `,
   })}
 `;
