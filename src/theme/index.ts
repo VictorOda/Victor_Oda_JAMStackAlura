@@ -19,6 +19,11 @@ const colors = {
     secondaryText: '#FFF',
     highlight: '#5B6167',
   },
+  header: {
+    background: '#141517',
+    mainText: '#FFF',
+    highlight: '#00C2DA',
+  },
 };
 
 export default {
