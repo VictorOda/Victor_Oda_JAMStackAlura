@@ -34,6 +34,7 @@ const theme = {
     header: '#141517',
     text: '#FFF',
     contrastBackground: '#5B6167',
+    contrastText: '#000',
   },
 };
 

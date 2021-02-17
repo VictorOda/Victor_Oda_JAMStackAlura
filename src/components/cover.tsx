@@ -1,22 +1,15 @@
 import React from 'react';
 import ReactTyped from 'react-typed';
 import styled from 'styled-components';
+import Title from './common/title';
 
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex: wrap;
   flex-direction: column;
-`;
-
-const Title = styled.span`
-  margin-top: 18px;
-  margin-left: 18px;
-  margin-bottom: 124px;
-  font-size: 36px;
-  color: ${({ theme }) => theme.colors.contrastBackground};
 `;
 
 const Name = styled.span`
