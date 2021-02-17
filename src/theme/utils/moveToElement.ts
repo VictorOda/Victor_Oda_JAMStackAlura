@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function MoveToPosition(element: string, block: string): void {
   if (block === 'center') {
     document.getElementById(element).scrollIntoView({ behavior: 'smooth', block: 'center' });
