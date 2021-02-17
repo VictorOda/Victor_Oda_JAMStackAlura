@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styled, { ThemeConsumer } from 'styled-components';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../theme/utils/breakpointsMedia';
 
 const WrapperHeader = styled.section`
   width: 100%;
@@ -7,8 +8,8 @@ const WrapperHeader = styled.section`
 `;
 
 const Navbar = styled.nav<{isSticky: boolean}>`
-  background-color: ${({ theme }) => theme.colors.header};
-  border-top: 2px solid ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.header.background};
+  border-top: 2px solid ${({ theme }) => theme.colors.header.highlight};
   width: 100%;
   height: 80px;
 
@@ -25,20 +26,34 @@ const Navbar = styled.nav<{isSticky: boolean}>`
 `;
 
 const Logo = styled.button`
-  background-color: ${({ theme }) => theme.colors.primary};
-  margin: 0 10%;
-  width: 136px;
+  background-color: ${({ theme }) => theme.colors.header.highlight};
+  margin-left: 10%;
   height: 100%;
   border: none;
+  outline: none;
+  cursor: pointer;
 `;
 
 const LogoText = styled.span`
-  font-size: 36px;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.header.mainText};
+  &:hover {
+    color: ${({ theme }) => theme.colors.header.background};
+  }
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.mediumXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.mediumXS.fontWeight};
+      margin: 0 8px;
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.medium.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.medium.fontWeight};
+      margin: 0 18px;
+    `,
+  })}
 `;
 
 const WrapperLinks = styled.div`
-  width: 50%;
   height: 100%;
   float: right;
   display: flex;
@@ -47,14 +62,34 @@ const WrapperLinks = styled.div`
 
 const LinkButton = styled.button`
   border: none;
-  width: 100px;
-  margin: 0 18px;
   background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  ${breakpointsMedia({
+    xs: css`
+      margin: 0 8px;
+    `,
+    md: css`
+      margin: 0 18px;
+    `,
+  })}
 `;
 
 const LinkText = styled.span`
-  font-size: 28px;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.header.mainText};
+  &:hover {
+    color: ${({ theme }) => theme.colors.header.highlight};
+  }
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.smallXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.smallXS.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.small.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.small.fontWeight};
+    `,
+  })}
 `;
 
 export default function Header() {
@@ -75,16 +110,20 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   });
 
+  function MoveToPosition(element: string): void {
+    document.getElementById(element).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
   return (
     <WrapperHeader id="navbar-container">
       <Navbar isSticky={isSticky}>
         <Logo>
-          <LogoText>&lt;oda/&gt;</LogoText>
+          <LogoText onClick={() => MoveToPosition('portfolio')}>&lt;oda/&gt;</LogoText>
         </Logo>
         <WrapperLinks>
-          <LinkButton><LinkText>/contact</LinkText></LinkButton>
-          <LinkButton><LinkText>/about</LinkText></LinkButton>
-          <LinkButton><LinkText>/projects</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('contact')}><LinkText>/contact</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('about')}><LinkText>/about</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('projects')}><LinkText>/projects</LinkText></LinkButton>
         </WrapperLinks>
       </Navbar>
     </WrapperHeader>

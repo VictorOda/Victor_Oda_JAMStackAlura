@@ -1,58 +1,102 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../theme/utils/breakpointsMedia';
 
 const WrapperProjects = styled.div`
-  background-color: #FFF;
+  background-color: ${({ theme }) => theme.colors.lightTheme.background};
   width: 100%;
   min-height: 300px;
-  padding: 18px
+  ${breakpointsMedia({
+    xs: css`
+      padding: 18px;
+    `,
+    md: css`
+      padding: 36px;
+    `,
+  })}
 `;
 
-const Title = styled.span`
-  font-size: 36px;
-  color: ${({ theme }) => theme.colors.header};
+const SectionTitle = styled.span`
+  color: ${({ theme }) => theme.colors.lightTheme.mainText};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitle.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitle.fontWeight};
+    `,
+  })}
 `;
 
 const FeaturedProject = styled.div`
-  width: 80%;
-  margin: 18px auto;
-  border: 2px solid ${({ theme }) => theme.colors.contrastBackground};
+  border: 2px solid ${({ theme }) => theme.colors.lightTheme.secondaryText};
   display: flex;
-  flex-direction: row;
+  
+  ${breakpointsMedia({
+    xs: css`
+      margin: 18px auto;
+      width: 500px;
+      flex-direction: column;
+    `,
+    md: css`
+      margin: 36px auto;
+      width: 80%;
+      max-width: 1000px;
+      flex-direction: row;
+    `,
+  })}
 `;
 
 const Screenshot = styled.img`
-  width: 60%;
   height: auto;
+
+  ${breakpointsMedia({
+    xs: css`
+      width: auto;
+    `,
+    md: css`
+      width: 60%;
+    `,
+  })}
 `;
 
 const Description = styled.div`
-  background-color: ${({ theme }) => theme.colors.contrastBackground};
   flex-direction: column;
-  padding: 18px;
+  padding: 36px;
 `;
 
 const ProjectTitle = styled.span`
-  font-weight:900;
-  font-size: 36px;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.lightTheme.highlight};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitle.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitle.fontWeight};
+    `,
+  })}
 `;
 
 const ProjectDescription = styled.p`
-  font-size: 18px;
-  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+  font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
+  color: ${({ theme }) => theme.colors.lightTheme.mainText};
 `;
 
 export default function Projects() {
   return (
-    <WrapperProjects>
-      <Title>/projects</Title>
+    <WrapperProjects id="projects">
+      <SectionTitle>/projects</SectionTitle>
       <FeaturedProject>
         <Screenshot src="./images/quiz-screenshot.jpg" alt="quiz" />
         <Description>
           <ProjectTitle>Quiz Challenge</ProjectTitle>
           <ProjectDescription>
-            Quiz desenvolvido durante a imersão next.js da Alura.
+            Quiz desenvolvido durante a imersão React+Next.js da Alura.
             O objetivo é tentar adivinhar de qual jogo é a música
             mas você só pode escutar 1 segundo dela!
           </ProjectDescription>
