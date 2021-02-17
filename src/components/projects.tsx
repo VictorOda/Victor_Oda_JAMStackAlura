@@ -51,10 +51,10 @@ const FeaturedProject = styled.div`
 
 const Screenshot = styled.img`
   height: auto;
-
+  cursor: pointer;
   ${breakpointsMedia({
     xs: css`
-      width: auto;
+      width: 100%;
     `,
     md: css`
       width: 60%;
@@ -92,7 +92,9 @@ export default function Projects() {
     <WrapperProjects id="projects">
       <SectionTitle>/projects</SectionTitle>
       <FeaturedProject>
-        <Screenshot src="./images/quiz-screenshot.jpg" alt="quiz" />
+        <a href="https://1sec-quiz-pihprqx4c.vercel.app/">
+          <Screenshot src="./images/quiz-screenshot.jpg" alt="quiz" />
+        </a>
         <Description>
           <ProjectTitle>Quiz Challenge</ProjectTitle>
           <ProjectDescription>
