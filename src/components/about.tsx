@@ -1,32 +1,57 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../theme/utils/breakpointsMedia';
 
 const WrapperAbout = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.highlightTheme.background};
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 18px;
+  ${breakpointsMedia({
+    xs: css`
+      padding: 18px;
+    `,
+    md: css`
+      padding: 36px;
+    `,
+  })}
 `;
 
-const Title = styled.span`
-  margin-top: 18px;
-  margin-left: 18px;
-  font-size: 36px;
-  color: ${({ theme }) => theme.colors.text};
+const SectionTitle = styled.span`
+  color: ${({ theme }) => theme.colors.highlightTheme.secondaryText};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitle.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitle.fontWeight};
+    `,
+  })}
 `;
 
 const Description = styled.span`
   width: 80%;
-  margin: 18px auto;
-  font-size: 24px;
-  color: ${({ theme }) => theme.colors.contrastText};
+  color: ${({ theme }) => theme.colors.highlightTheme.mainText};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
+      margin: 18px auto;
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
+      margin: 36px auto;
+    `,
+  })}
 `;
 
 export default function About() {
   return (
     <WrapperAbout>
-      <Title>/about</Title>
+      <SectionTitle>/about</SectionTitle>
       <Description>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna
