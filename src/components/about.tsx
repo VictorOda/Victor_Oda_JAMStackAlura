@@ -33,6 +33,7 @@ const SectionTitle = styled.span`
 
 const Description = styled.span`
   width: 80%;
+  max-width: 1000px;
   color: ${({ theme }) => theme.colors.highlightTheme.mainText};
   ${breakpointsMedia({
     xs: css`
@@ -53,14 +54,23 @@ export default function About() {
     <WrapperAbout>
       <SectionTitle>/about</SectionTitle>
       <Description>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit
-        esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+        Formado em Ciência da Computação pela Universidade Federal do Paraná,
+        eu possuo mais de 6 anos de experiência em desenvolvimento de software.
+        Destes, 5 anos foram focados em desenvolvimento de jogos utilizando a Unity
+        como engine e C# como linguagem de programação. Durante 3 anos liderei uma
+        equipe de desenvolvedores e designers que juntos criamos mais de 300
+        jogos de celular, prezando não somente pela qualidade mas também em entregar
+        os projetos no prazo definido.
+        <br />
+        <br />
+        Querendo mudar de área, estou agora focando no Front End, sempre estudando e
+        buscando novos conhecimentos. Atualmente estou participando do Bootcamp da Alura
+        de JAM Stack!
+        <br />
+        <br />
+        Recentemente tive a oportunidade de me juntar ao time da&nbsp;
+        <a href="https://wuzu.io">Wuzu</a>
+        ! Ajudando a equipe de desenvolvimento a criar diversos produtos para o mercado financeiro.
       </Description>
     </WrapperAbout>
   );
