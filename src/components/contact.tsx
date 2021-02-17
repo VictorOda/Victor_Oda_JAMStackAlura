@@ -1,25 +1,56 @@
 import React from 'react';
-import styled from 'styled-components';
-import Title from './common/title';
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../theme/utils/breakpointsMedia';
 
 const WrapperContact = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.darkTheme.background};
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 18px;
+  ${breakpointsMedia({
+    xs: css`
+      padding: 18px;
+    `,
+    md: css`
+      padding: 36px;
+    `,
+  })}
+`;
+
+const SectionTitle = styled.span`
+  color: ${({ theme }) => theme.colors.darkTheme.secondaryText};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.sectionTitle.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.sectionTitle.fontWeight};
+    `,
+  })}
 `;
 
 const ContactInfo = styled.span`
-  font-size: 24px;
-  color: ${({ theme }) => theme.colors.text};
-  margin: 0 auto;
+  color: ${({ theme }) => theme.colors.darkTheme.mainText};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.smallXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.smallXS.fontWeight};
+      margin: 18px auto;
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.small.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.small.fontWeight};
+      margin: 36px auto;
+    `,
+  })}
 `;
 
 export default function Contact() {
   return (
     <WrapperContact>
-      <Title>/contact</Title>
+      <SectionTitle>/contact</SectionTitle>
       <ContactInfo>
         &lt;contact
         <br />
