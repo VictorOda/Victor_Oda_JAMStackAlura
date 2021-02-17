@@ -5,14 +5,20 @@ import MoveToPosition from '../theme/utils/moveToElement';
 
 const WrapperHeader = styled.section`
   width: 100%;
-  height: 80px;
+  ${breakpointsMedia({
+    xs: css`
+      height: 60px;
+    `,
+    md: css`
+      height: 80px;
+    `,
+  })}
 `;
 
 const Navbar = styled.nav<{isSticky: boolean}>`
   background-color: ${({ theme }) => theme.colors.header.background};
   border-top: 2px solid ${({ theme }) => theme.colors.header.highlight};
   width: 100%;
-  height: 80px;
 
   ${(prop) => {
     if (prop.isSticky) {
@@ -24,6 +30,15 @@ const Navbar = styled.nav<{isSticky: boolean}>`
     }
     return '';
   }}
+
+${breakpointsMedia({
+    xs: css`
+      height: 60px;
+    `,
+    md: css`
+      height: 80px;
+    `,
+  })}
 `;
 
 const Logo = styled.button`
@@ -68,7 +83,7 @@ const LinkButton = styled.button`
   cursor: pointer;
   ${breakpointsMedia({
     xs: css`
-      margin: 0 8px;
+      margin: 0;
     `,
     md: css`
       margin: 0 18px;
@@ -83,8 +98,8 @@ const LinkText = styled.span`
   }
   ${breakpointsMedia({
     xs: css`
-      font-size: ${({ theme }) => theme.typographyVariants.smallXS.fontSize};
-      font-weight: ${({ theme }) => theme.typographyVariants.smallXS.fontWeight};
+      font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
     `,
     md: css`
       font-size: ${({ theme }) => theme.typographyVariants.small.fontSize};
@@ -115,12 +130,12 @@ export default function Header() {
     <WrapperHeader id="navbar-container">
       <Navbar isSticky={isSticky}>
         <Logo>
-          <LogoText onClick={() => MoveToPosition('portfolio', 'center')}>&lt;oda/&gt;</LogoText>
+          <LogoText onClick={() => MoveToPosition('portfolio', 'nearest')}>&lt;oda/&gt;</LogoText>
         </Logo>
         <WrapperLinks>
-          <LinkButton onClick={() => MoveToPosition('contact', 'center')}><LinkText>/contact</LinkText></LinkButton>
-          <LinkButton onClick={() => MoveToPosition('about', 'center')}><LinkText>/about</LinkText></LinkButton>
-          <LinkButton onClick={() => MoveToPosition('projects', 'center')}><LinkText>/projects</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('contact', 'nearest')}><LinkText>/contact</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('about', 'nearest')}><LinkText>/about</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('projects', 'nearest')}><LinkText>/projects</LinkText></LinkButton>
         </WrapperLinks>
       </Navbar>
     </WrapperHeader>

@@ -37,7 +37,7 @@ const FeaturedProject = styled.div`
   ${breakpointsMedia({
     xs: css`
       margin: 18px auto;
-      width: 500px;
+      width: 90%;
       flex-direction: column;
     `,
     md: css`
