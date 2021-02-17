@@ -1,3 +1,5 @@
+import { typographyVariants } from './typographyVariants';
+
 const colors = {
   darkTheme: {
     background: '#292F35',
@@ -28,6 +30,7 @@ export default {
     lg: 992,
     xl: 1200,
   },
+  typographyVariants,
   borderRadius: '12px',
   transition: '200ms ease-in-out',
   fontFamily: {

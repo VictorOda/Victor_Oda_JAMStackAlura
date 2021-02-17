@@ -2,6 +2,7 @@ import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import theme from '../src/theme';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -27,16 +28,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const theme = {
-  colors: {
-    primary: '#00C2DA',
-    background: '#292F35',
-    header: '#141517',
-    text: '#FFF',
-    contrastBackground: '#5B6167',
-    contrastText: '#000',
-  },
-};
+// const theme = {
+//   colors: {
+//     primary: '#00C2DA',
+//     background: '#292F35',
+//     header: '#141517',
+//     text: '#FFF',
+//     contrastBackground: '#5B6167',
+//     contrastText: '#000',
+//   },
+// };
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

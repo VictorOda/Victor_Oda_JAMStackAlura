@@ -39,7 +39,7 @@ export const typographyVariants = {
     fontWeight: '500',
     lineHeight: 1.25, // 125%
   },
-  mediuXS: {
+  mediumXS: {
     fontSize: '24px',
     fontWeight: '500',
     lineHeight: 1.25, // 125%
