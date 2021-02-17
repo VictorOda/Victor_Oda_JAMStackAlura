@@ -89,7 +89,7 @@ const ProjectDescription = styled.p`
 
 export default function Projects() {
   return (
-    <WrapperProjects>
+    <WrapperProjects id="projects">
       <SectionTitle>/projects</SectionTitle>
       <FeaturedProject>
         <Screenshot src="./images/quiz-screenshot.jpg" alt="quiz" />

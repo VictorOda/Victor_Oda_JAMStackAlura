@@ -99,7 +99,7 @@ export default function Cover() {
 
   return (
     <div>
-      <WrapperCover>
+      <WrapperCover id="portfolio">
         <SectionTitle>/portfolio</SectionTitle>
         <WrapperTitle>
           <Name>

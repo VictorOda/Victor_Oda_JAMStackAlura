@@ -49,7 +49,7 @@ const ContactInfo = styled.span`
 
 export default function Contact() {
   return (
-    <WrapperContact>
+    <WrapperContact id="contact">
       <SectionTitle>/contact</SectionTitle>
       <ContactInfo>
         &lt;contact

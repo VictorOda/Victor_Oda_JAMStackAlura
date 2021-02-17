@@ -51,7 +51,7 @@ const Description = styled.span`
 
 export default function About() {
   return (
-    <WrapperAbout>
+    <WrapperAbout id="about">
       <SectionTitle>/about</SectionTitle>
       <Description>
         Formado em Ciência da Computação pela Universidade Federal do Paraná,
