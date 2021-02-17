@@ -50,11 +50,11 @@ const FeaturedProject = styled.div`
 `;
 
 const Screenshot = styled.img`
-  height: auto;
   cursor: pointer;
+  height: auto;
   ${breakpointsMedia({
     xs: css`
-      width: 100%;
+      width: auto;
     `,
     md: css`
       width: 60%;
@@ -67,7 +67,7 @@ const Description = styled.div`
   padding: 36px;
 `;
 
-const ProjectTitle = styled.span`
+const ProjectTitle = styled.a`
   color: ${({ theme }) => theme.colors.lightTheme.highlight};
   ${breakpointsMedia({
     xs: css`
@@ -92,11 +92,9 @@ export default function Projects() {
     <WrapperProjects id="projects">
       <SectionTitle>/projects</SectionTitle>
       <FeaturedProject>
-        <a href="https://1sec-quiz-pihprqx4c.vercel.app/">
-          <Screenshot src="./images/quiz-screenshot.jpg" alt="quiz" />
-        </a>
+        <Screenshot src="./images/quiz-screenshot.jpg" alt="quiz" />
         <Description>
-          <ProjectTitle>Quiz Challenge</ProjectTitle>
+          <ProjectTitle href="https://1sec-quiz-pihprqx4c.vercel.app/">Quiz Challenge</ProjectTitle>
           <ProjectDescription>
             Quiz desenvolvido durante a imersão React+Next.js da Alura.
             O objetivo é tentar adivinhar de qual jogo é a música
