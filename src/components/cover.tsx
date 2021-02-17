@@ -50,7 +50,7 @@ const Name = styled.span`
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.nameXS.fontSize};
       font-weight: ${({ theme }) => theme.typographyVariants.nameXS.fontWeight};
-      margin-left: 64px;
+      margin-left: 32px;
     `,
     md: css`
       font-size: ${({ theme }) => theme.typographyVariants.name.fontSize};
@@ -66,7 +66,7 @@ const Job = styled.span`
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.jobTitleXS.fontSize};
       font-weight: ${({ theme }) => theme.typographyVariants.jobTitleXS.fontWeight};
-      margin-left: 64px;
+      margin-left: 32px;
     `,
     md: css`
       font-size: ${({ theme }) => theme.typographyVariants.jobTitle.fontSize};
@@ -82,8 +82,8 @@ const Code = styled.span`
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.mediumXS.fontSize};
       font-weight: ${({ theme }) => theme.typographyVariants.mediumXS.fontWeight};
-      margin-left: 98px;
-      margin-bottom: 36px;
+      margin-left: 32px;
+      margin-bottom: 18px;
     `,
     md: css`
       font-size: ${({ theme }) => theme.typographyVariants.medium.fontSize};
