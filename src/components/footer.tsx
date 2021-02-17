@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const WrapperFooter = styled.div`
-  background-color: ${({ theme }) => theme.colors.header};
+  background-color: ${({ theme }) => theme.colors.header.background};
   width: 100%;
   height: 60px;
 `;
 
 const FooterBackground = styled.footer`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.header.highlight};
   width: 104px;
   height: 60px;
   margin: auto;
