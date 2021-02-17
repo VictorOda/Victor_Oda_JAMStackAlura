@@ -5,7 +5,7 @@ import Title from './common/title';
 
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex: wrap;

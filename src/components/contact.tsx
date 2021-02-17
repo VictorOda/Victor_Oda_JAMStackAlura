@@ -4,7 +4,7 @@ import Title from './common/title';
 
 const WrapperContact = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-bottom: 18px;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const WrapperProjects = styled.div`
   background-color: #FFF;
-  width: 100vw;
+  width: 100%;
   min-height: 300px;
   padding: 18px
 `;

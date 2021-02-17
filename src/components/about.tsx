@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const WrapperAbout = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-bottom: 18px;
