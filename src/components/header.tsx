@@ -30,10 +30,15 @@ const Logo = styled.button`
   margin-left: 10%;
   height: 100%;
   border: none;
+  outline: none;
+  cursor: pointer;
 `;
 
 const LogoText = styled.span`
   color: ${({ theme }) => theme.colors.header.mainText};
+  &:hover {
+    color: ${({ theme }) => theme.colors.header.background};
+  }
   ${breakpointsMedia({
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.mediumXS.fontSize};
@@ -58,6 +63,8 @@ const WrapperLinks = styled.div`
 const LinkButton = styled.button`
   border: none;
   background-color: transparent;
+  outline: none;
+  cursor: pointer;
   ${breakpointsMedia({
     xs: css`
       margin: 0 8px;
@@ -70,6 +77,9 @@ const LinkButton = styled.button`
 
 const LinkText = styled.span`
   color: ${({ theme }) => theme.colors.header.mainText};
+  &:hover {
+    color: ${({ theme }) => theme.colors.header.highlight};
+  }
   ${breakpointsMedia({
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.smallXS.fontSize};

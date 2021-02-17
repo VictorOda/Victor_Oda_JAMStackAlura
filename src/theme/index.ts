@@ -22,6 +22,7 @@ const colors = {
   header: {
     background: '#141517',
     mainText: '#FFF',
+    secondaryText: '#5B6167',
     highlight: '#00C2DA',
   },
 };
