@@ -13,7 +13,7 @@ const colors = {
     secondaryText: '#5B6167',
     highlight: '#00C2DA',
   },
-  hightlightTheme: {
+  highlightTheme: {
     background: '#00C2DA',
     mainText: '#141517',
     secondaryText: '#FFF',
