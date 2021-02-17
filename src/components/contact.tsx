@@ -47,20 +47,30 @@ const ContactInfo = styled.span`
   })}
 `;
 
+const ColoredText = styled.span`
+  ${(prop) => `color: ${prop.color}`}
+`;
+
 export default function Contact() {
   return (
     <WrapperContact id="contact">
       <SectionTitle>/contact</SectionTitle>
       <ContactInfo>
-        &lt;contact
+        &lt;
+        <ColoredText color="#00C2DA">contact</ColoredText>
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;email=&quot;victor.ra.oda@gmail.com&quot;
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <ColoredText color="#00C2DA">email</ColoredText>
+        =
+        <ColoredText color="#00C2DA">&quot;victor.ra.oda@gmail.com&quot;</ColoredText>
         <br />
         /&gt;
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;Get in touch!
+        &nbsp;&nbsp;&nbsp;&nbsp;Vamos trocar uma ideia!
         <br />
-        &lt;/contact&gt;
+        &lt;/
+        <ColoredText color="#00C2DA">contact</ColoredText>
+        &gt;
       </ContactInfo>
     </WrapperContact>
   );

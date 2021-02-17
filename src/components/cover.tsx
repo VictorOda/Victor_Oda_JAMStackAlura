@@ -105,6 +105,10 @@ const Arrow = styled.button`
   cursor: pointer;
 `;
 
+const ColoredText = styled.span`
+  ${(prop) => `color: ${prop.color}`}
+`;
+
 export default function Cover() {
   const typedOptions = {
     typeSpeed: 50,
@@ -131,11 +135,17 @@ export default function Cover() {
           </Job>
         </WrapperTitle>
         <Code>
-          &lt;p class=&quot;font&quot;&gt;
+          &lt;
+          <ColoredText color="#00C2DA">p class</ColoredText>
+          =
+          <ColoredText color="#00C2DA">&quot;especialização&quot;</ColoredText>
+          &gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;Fira Sans
+          &nbsp;&nbsp;&nbsp;&nbsp;Front-End
           <br />
-          &lt;/p&gt;
+          &lt;/
+          <ColoredText color="#00C2DA">p</ColoredText>
+          &gt;
         </Code>
         <Arrow onClick={() => MoveToPosition('navbar-container', 'start')}>
           <Lottie options={lottieOptions} />
