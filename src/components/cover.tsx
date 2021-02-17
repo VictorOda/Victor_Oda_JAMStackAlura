@@ -103,6 +103,15 @@ const Arrow = styled.button`
   margin: 0 auto;
   background: transparent;
   cursor: pointer;
+
+  ${breakpointsMedia({
+    xs: css`
+      margin-bottom: 18px;
+    `,
+    md: css`
+      margin-bottom: 0;
+    `,
+  })}
 `;
 
 const ColoredText = styled.span`
