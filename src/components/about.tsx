@@ -63,12 +63,12 @@ export default function About() {
         os projetos no prazo definido.
         <br />
         <br />
-        Querendo mudar de área, estou agora focando no Front End, sempre estudando e
+        Querendo mudar de área, estou agora focando no Front-End, sempre estudando e
         buscando novos conhecimentos. Atualmente estou participando do Bootcamp da Alura
         de JAM Stack!
         <br />
         <br />
-        Recentemente tive a oportunidade de me juntar ao time da&nbsp;
+        Recentemente também tive a oportunidade de me juntar ao time da&nbsp;
         <a href="https://wuzu.io">Wuzu</a>
         ! Ajudando a equipe de desenvolvimento a criar diversos produtos para o mercado financeiro.
       </Description>

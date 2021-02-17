@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactTyped from 'react-typed';
 import styled, { css } from 'styled-components';
+import Lottie from 'react-lottie';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
+import arrowAnimation from '../lotties/arrow.json';
+import MoveToPosition from '../theme/utils/moveToElement';
 
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTheme.background};
@@ -91,12 +94,34 @@ const Code = styled.span`
   })}
 `;
 
+const Arrow = styled.button`
+  transform: rotate(90deg);
+  border: none;
+  outline: none;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
+  background: transparent;
+  cursor: pointer;
+`;
+
+const ColoredText = styled.span`
+  ${(prop) => `color: ${prop.color}`}
+`;
+
 export default function Cover() {
   const typedOptions = {
     typeSpeed: 50,
     cursorChar: '_',
   };
-
+  const lottieOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: arrowAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
   return (
     <div>
       <WrapperCover id="portfolio">
@@ -110,12 +135,21 @@ export default function Cover() {
           </Job>
         </WrapperTitle>
         <Code>
-          &lt;p class=&quot;font&quot;&gt;
+          &lt;
+          <ColoredText color="#00C2DA">p class</ColoredText>
+          =
+          <ColoredText color="#00C2DA">&quot;especialização&quot;</ColoredText>
+          &gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;Fira Sans
+          &nbsp;&nbsp;&nbsp;&nbsp;Front-End
           <br />
-          &lt;/p&gt;
+          &lt;/
+          <ColoredText color="#00C2DA">p</ColoredText>
+          &gt;
         </Code>
+        <Arrow onClick={() => MoveToPosition('navbar-container', 'start')}>
+          <Lottie options={lottieOptions} />
+        </Arrow>
       </WrapperCover>
     </div>
   );
