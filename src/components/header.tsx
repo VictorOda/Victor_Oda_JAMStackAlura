@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
+import MoveToPosition from '../theme/utils/moveToElement';
 
 const WrapperHeader = styled.section`
   width: 100%;
@@ -110,20 +111,16 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   });
 
-  function MoveToPosition(element: string): void {
-    document.getElementById(element).scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
   return (
     <WrapperHeader id="navbar-container">
       <Navbar isSticky={isSticky}>
         <Logo>
-          <LogoText onClick={() => MoveToPosition('portfolio')}>&lt;oda/&gt;</LogoText>
+          <LogoText onClick={() => MoveToPosition('portfolio', 'center')}>&lt;oda/&gt;</LogoText>
         </Logo>
         <WrapperLinks>
-          <LinkButton onClick={() => MoveToPosition('contact')}><LinkText>/contact</LinkText></LinkButton>
-          <LinkButton onClick={() => MoveToPosition('about')}><LinkText>/about</LinkText></LinkButton>
-          <LinkButton onClick={() => MoveToPosition('projects')}><LinkText>/projects</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('contact', 'center')}><LinkText>/contact</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('about', 'center')}><LinkText>/about</LinkText></LinkButton>
+          <LinkButton onClick={() => MoveToPosition('projects', 'center')}><LinkText>/projects</LinkText></LinkButton>
         </WrapperLinks>
       </Navbar>
     </WrapperHeader>

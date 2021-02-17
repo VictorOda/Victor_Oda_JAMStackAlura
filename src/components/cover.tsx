@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactTyped from 'react-typed';
 import styled, { css } from 'styled-components';
+import Lottie from 'react-lottie';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
+import arrowAnimation from '../lotties/arrow.json';
+import MoveToPosition from '../theme/utils/moveToElement';
 
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTheme.background};
@@ -91,12 +94,30 @@ const Code = styled.span`
   })}
 `;
 
+const Arrow = styled.button`
+  transform: rotate(90deg);
+  border: none;
+  outline: none;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
+  background: transparent;
+  cursor: pointer;
+`;
+
 export default function Cover() {
   const typedOptions = {
     typeSpeed: 50,
     cursorChar: '_',
   };
-
+  const lottieOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: arrowAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
   return (
     <div>
       <WrapperCover id="portfolio">
@@ -116,6 +137,9 @@ export default function Cover() {
           <br />
           &lt;/p&gt;
         </Code>
+        <Arrow onClick={() => MoveToPosition('navbar-container', 'start')}>
+          <Lottie options={lottieOptions} />
+        </Arrow>
       </WrapperCover>
     </div>
   );
