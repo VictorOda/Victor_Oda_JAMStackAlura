@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactTyped from 'react-typed';
 import styled, { css } from 'styled-components';
 import Lottie from 'react-lottie';
@@ -119,8 +119,16 @@ const ColoredText = styled.span`
 `;
 
 export default function Cover() {
+  const [isTypedComplete, setTypedComplete] = useState(false);
   const typedOptions = {
     typeSpeed: 50,
+    backSpeed: 50,
+    cursorChar: '_',
+    onComplete: () => setTypedComplete(true),
+  };
+  const typedOptionsJob = {
+    typeSpeed: 50,
+    backSpeed: 50,
     cursorChar: '_',
   };
   const lottieOptions = {
@@ -140,7 +148,7 @@ export default function Cover() {
             Victor Oda.
           </Name>
           <Job>
-            <ReactTyped strings={['Software Engineer']} {...typedOptions} startDelay={500} />
+            {isTypedComplete ? <span>Software Engineer</span> : <ReactTyped strings={['Software Engineer']} {...typedOptions} />}
           </Job>
         </WrapperTitle>
         <Code>
@@ -150,7 +158,8 @@ export default function Cover() {
           <ColoredText color="#00C2DA">&quot;especialização&quot;</ColoredText>
           &gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;Front-End
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          {isTypedComplete ? <ReactTyped strings={['Games', 'Front-End']} {...typedOptionsJob} startDelay={100} /> : <span> </span> }
           <br />
           &lt;/
           <ColoredText color="#00C2DA">p</ColoredText>
