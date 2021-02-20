@@ -9,7 +9,7 @@ import MoveToPosition from '../theme/utils/moveToElement';
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTheme.background};
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex: wrap;
   flex-direction: column;
