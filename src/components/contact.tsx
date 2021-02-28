@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
+import FormContact from './common/forms/formContact';
 import Modal from './common/modals/modal';
 
 const WrapperContact = styled.div`
@@ -86,7 +87,7 @@ export default function Contact() {
         &gt;
       </ContactInfo>
       <Modal isOpen={isOpen} onClose={() => setModalOpen(false)}>
-        Test
+        <FormContact />
       </Modal>
     </WrapperContact>
   );

@@ -5,9 +5,7 @@ import { css } from 'styled-components';
 
 const ModalWrapper = styled.div<{ isOpen: boolean }>`
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.2);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -44,11 +42,19 @@ interface ModalProps {
   children: ReactNode
 }
 
+const ModalContent = styled.div`
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+
 export default function Modal({ isOpen, onClose, children }: ModalProps) {
   return (
     <ModalWrapper
       isOpen={isOpen}
-      onClick={(event: Event) => {
+      onClick={(event: React.MouseEvent) => {
         const isSafeArea = (event.target as Element).closest('[data-modal-safe-area="true"]');
         if (!isSafeArea) {
           onClose();
@@ -72,9 +78,9 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
         transition={{ duration: 0.5 }}
         animate={isOpen ? 'open' : 'closed'}
       >
-        <div data-modal-safe-area="true">
+        <ModalContent data-modal-safe-area="true">
           {children}
-        </div>
+        </ModalContent>
       </motion.div>
     </ModalWrapper>
   );
