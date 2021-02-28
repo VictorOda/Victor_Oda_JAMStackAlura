@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
+import Modal from './common/modals/modal';
 
 const WrapperContact = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTheme.background};
@@ -51,7 +53,12 @@ const ColoredText = styled.span`
   ${(prop) => `color: ${prop.color}`}
 `;
 
+const ContactButton = styled.button`
+  ${(prop) => `background-color: ${prop.color}`}
+`;
+
 export default function Contact() {
+  const [isOpen, setModalOpen] = useState(false);
   return (
     <WrapperContact id="contact">
       <SectionTitle>/contact</SectionTitle>
@@ -66,12 +73,21 @@ export default function Contact() {
         <br />
         /&gt;
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;Vamos trocar uma ideia!
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <ContactButton
+          color="#00C2DA"
+          onClick={() => setModalOpen(!isOpen)}
+        >
+          Vamos trocar uma ideia!
+        </ContactButton>
         <br />
         &lt;/
         <ColoredText color="#00C2DA">contact</ColoredText>
         &gt;
       </ContactInfo>
+      <Modal isOpen={isOpen} onClose={() => setModalOpen(false)}>
+        Test
+      </Modal>
     </WrapperContact>
   );
 }
