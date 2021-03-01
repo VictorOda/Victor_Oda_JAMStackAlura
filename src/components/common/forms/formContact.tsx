@@ -27,6 +27,12 @@ const TextInput = styled.input`
   height: 32px;
 `;
 
+const TextArea = styled.textarea`
+  width: 90%;
+  margin: auto;
+  height: 128px;
+`;
+
 const Title = styled.h1`
   margin: auto;
   padding: 8px 0;
@@ -50,7 +56,7 @@ export default function FormContact() {
       <OptionText>Seu email</OptionText>
       <TextInput type="text" id="email" />
       <OptionText>Sua mensagem</OptionText>
-      <TextInput type="text" id="message" />
+      <TextArea id="message" />
       <FormButton>ENVIAR</FormButton>
     </WrapperForm>
   );
