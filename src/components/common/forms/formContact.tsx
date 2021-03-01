@@ -61,7 +61,11 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export default function FormContact() {
+interface FormProps {
+  onClose(): void
+}
+
+export default function FormContact({ onClose }: FormProps) {
   const typedOptions = {
     typeSpeed: 50,
     backSpeed: 50,
@@ -72,7 +76,7 @@ export default function FormContact() {
     <WrapperForm>
       <FormHeader>
         <Title><ReactTyped strings={['Envie sua mensagem', 'Vamos trocar uma ideia', 'Escreve aí!']} {...typedOptions} /></Title>
-        <CloseButton type="button">
+        <CloseButton type="button" onClick={onClose}>
           <i className="fa fa-times fa-3x" />
         </CloseButton>
       </FormHeader>

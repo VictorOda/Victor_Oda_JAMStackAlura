@@ -87,7 +87,7 @@ export default function Contact() {
         &gt;
       </ContactInfo>
       <Modal isOpen={isOpen} onClose={() => setModalOpen(false)}>
-        <FormContact />
+        <FormContact onClose={() => setModalOpen(false)} />
       </Modal>
     </WrapperContact>
   );
