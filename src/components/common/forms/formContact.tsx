@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+import ReactTyped from 'react-typed';
+import 'font-awesome/css/font-awesome.min.css';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 const WrapperForm = styled.form`
@@ -9,6 +10,7 @@ const WrapperForm = styled.form`
   padding: 8px 32px;
   margin: auto;
   background: #fff;
+  border: 2px solid #141517;
 
   ${breakpointsMedia({
     xs: css`
@@ -34,12 +36,17 @@ const TextArea = styled.textarea`
 `;
 
 const Title = styled.h1`
-  margin: auto;
-  padding: 8px 0;
+  padding-left: 5%;
 `;
 
 const OptionText = styled.h3`
   padding-left: 5%;
+  margin-bottom: 4px;
+`;
+
+const FormHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const FormButton = styled.h2`
@@ -47,10 +54,28 @@ const FormButton = styled.h2`
   padding: 16px;
 `;
 
+const CloseButton = styled.button`
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
 export default function FormContact() {
+  const typedOptions = {
+    typeSpeed: 50,
+    backSpeed: 50,
+    loop: true,
+    cursorChar: '_',
+  };
   return (
     <WrapperForm>
-      <Title>ENVIE SUA MENSAGEM</Title>
+      <FormHeader>
+        <Title><ReactTyped strings={['Envie sua mensagem', 'Vamos trocar uma ideia', 'Escreve aí!']} {...typedOptions} /></Title>
+        <CloseButton type="button">
+          <i className="fa fa-times fa-3x" />
+        </CloseButton>
+      </FormHeader>
       <OptionText>Seu nome</OptionText>
       <TextInput type="text" id="name" />
       <OptionText>Seu email</OptionText>
