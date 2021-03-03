@@ -36,6 +36,10 @@ const SectionTitle = styled.span`
 
 const ContactInfo = styled.span`
   color: ${({ theme }) => theme.colors.darkTheme.mainText};
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
   ${breakpointsMedia({
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.smallXS.fontSize};
@@ -50,12 +54,17 @@ const ContactInfo = styled.span`
   })}
 `;
 
-const ColoredText = styled.span`
-  ${(prop) => `color: ${prop.color}`}
-`;
-
 const ContactButton = styled.button`
-  ${(prop) => `background-color: ${prop.color}`}
+  padding: 8px;
+  font-size: ${({ theme }) => theme.typographyVariants.smallCode.fontSize};
+  font-weight: ${({ theme }) => theme.typographyVariants.smallCode.fontWeight};
+  background-color: ${({ theme }) => theme.colors.highlightTheme.background};
+  color: ${({ theme }) => theme.colors.highlightTheme.secondaryText};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  border: none;
+  outline: none;
+  margin: 16px auto;
+  width: 100%;
 `;
 
 export default function Contact() {
@@ -64,27 +73,13 @@ export default function Contact() {
     <WrapperContact id="contact">
       <SectionTitle>/contact</SectionTitle>
       <ContactInfo>
-        &lt;
-        <ColoredText color="#00C2DA">contact</ColoredText>
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <ColoredText color="#00C2DA">email</ColoredText>
-        =
-        <ColoredText color="#00C2DA">&quot;victor.ra.oda@gmail.com&quot;</ColoredText>
-        <br />
-        /&gt;
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;
+        APERTA AQUI!
         <ContactButton
           color="#00C2DA"
           onClick={() => setModalOpen(!isOpen)}
         >
-          Vamos trocar uma ideia!
+          <i className="fa fa-bullhorn fa-2x" />
         </ContactButton>
-        <br />
-        &lt;/
-        <ColoredText color="#00C2DA">contact</ColoredText>
-        &gt;
       </ContactInfo>
       <Modal isOpen={isOpen} onClose={() => setModalOpen(false)}>
         <FormContact onClose={() => setModalOpen(false)} />
