@@ -3,9 +3,10 @@ import styled, { css } from 'styled-components';
 import ReactTyped from 'react-typed';
 import 'font-awesome/css/font-awesome.min.css';
 import Lottie from 'react-lottie';
+import validator from 'validator';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
-import lottieError from '../../../lotties/error.json'
-import lottieSuccess from '../../../lotties/success.json'
+import lottieError from '../../../lotties/error.json';
+import lottieSuccess from '../../../lotties/success.json';
 
 const WrapperForm = styled.form`
   display: flex;
@@ -21,12 +22,14 @@ const TextInput = styled.input`
   width: 90%;
   margin: auto;
   height: 32px;
+  padding: 8px;
 `;
 
 const TextArea = styled.textarea`
   width: 90%;
   margin: auto;
   height: 128px;
+  padding: 8px;
 `;
 
 const Title = styled.h1`
@@ -130,6 +133,7 @@ export default function FormContact({ onClose, isOpen }: FormProps) {
 
   const isFormInvalid = messageInfo.name.length === 0
     || messageInfo.email.length === 0
+    || !validator.isEmail(messageInfo.email)
     || messageInfo.message.length === 0;
 
   const typedOptions = {
@@ -209,11 +213,11 @@ export default function FormContact({ onClose, isOpen }: FormProps) {
       {!isFormSubmitted ? (
         <>
           <OptionText>Seu nome</OptionText>
-          <TextInput type="text" id="name" value={messageInfo.name} onChange={handleChange} />
+          <TextInput type="text" id="name" value={messageInfo.name} onChange={handleChange} placeholder="Seu nome aqui" />
           <OptionText>Seu email</OptionText>
-          <TextInput type="text" id="email" value={messageInfo.email} onChange={handleChange} />
+          <TextInput type="text" id="email" value={messageInfo.email} onChange={handleChange} placeholder="Seu email aqui" />
           <OptionText>Sua mensagem</OptionText>
-          <TextArea id="message" value={messageInfo.message} onChange={handleChange} />
+          <TextArea id="message" value={messageInfo.message} onChange={handleChange} placeholder="Pode escrever qualquer coisa" />
           <ButtonWrapper>
             <FormButton disabled={isFormInvalid}>ENVIAR</FormButton>
           </ButtonWrapper>

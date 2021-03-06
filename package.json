@@ -17,7 +17,8 @@
     "react-lottie": "^1.2.3",
     "react-typed": "^1.2.0",
     "styled-components": "^5.0.0",
-    "styled-normalize": "^8.0.7"
+    "styled-normalize": "^8.0.7",
+    "validator": "^13.5.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
