@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import ReactTyped from 'react-typed';
 import 'font-awesome/css/font-awesome.min.css';
@@ -10,7 +10,7 @@ import lottieSuccess from '../../../lotties/success.json'
 const WrapperForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 8px 32px;
+  padding-bottom: 36px;
   margin: auto;
   background: #fff;
   border: 2px solid #141517;
@@ -51,6 +51,8 @@ const OptionText = styled.h3`
 const FormHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  background: ${({ theme }) => theme.colors.highlightTheme.mainText};
+  color: ${({ theme }) => theme.colors.highlightTheme.secondaryText};
 `;
 
 const FormButton = styled.button`
@@ -71,14 +73,12 @@ const FormButton = styled.button`
 
 const CloseButton = styled.button`
   background: transparent;
+  margin-right: 36px;
   border: none;
   outline: none;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.highlightTheme.secondaryText};
 `;
-
-interface FormProps {
-  onClose(): void
-}
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -93,13 +93,28 @@ const ButtonWrapper = styled.div`
   margin: auto;
 `;
 
-export default function FormContact({ onClose }: FormProps) {
+const ResultWrapper = styled.div`
+  margin: auto;
+`;
+
+interface FormProps {
+  onClose(): void
+  isOpen: boolean
+}
+
+export default function FormContact({ onClose, isOpen }: FormProps) {
   const [isFormSubmitted, setFormSubmitted] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [messageInfo, setMessageInfo] = useState({
     name: '',
     email: '',
     message: '',
+  });
+  useEffect(() => {
+    // Reset the form
+    if (!isOpen) {
+      setFormSubmitted(isOpen);
+    }
   });
 
   function handleChange(event) {
@@ -108,7 +123,6 @@ export default function FormContact({ onClose }: FormProps) {
       ...messageInfo,
       [fieldName]: event.target.value,
     });
-    console.log('messageInfo', messageInfo);
   }
 
   const isFormInvalid = messageInfo.name.length === 0
@@ -189,21 +203,41 @@ export default function FormContact({ onClose }: FormProps) {
           <i className="fa fa-times fa-3x" />
         </CloseButton>
       </FormHeader>
-      <OptionText>Seu nome</OptionText>
-      <TextInput type="text" id="name" value={messageInfo.name} onChange={handleChange} />
-      <OptionText>Seu email</OptionText>
-      <TextInput type="text" id="email" value={messageInfo.email} onChange={handleChange} />
-      <OptionText>Sua mensagem</OptionText>
-      <TextArea id="message" value={messageInfo.message} onChange={handleChange} />
-      <ButtonWrapper>
-        {isFormSubmitted && submissionStatus === formStates.DONE && (
-          <Lottie options={lottieOptionsSuccess} />
+      {!isFormSubmitted ? (
+        <>
+          <OptionText>Seu nome</OptionText>
+          <TextInput type="text" id="name" value={messageInfo.name} onChange={handleChange} />
+          <OptionText>Seu email</OptionText>
+          <TextInput type="text" id="email" value={messageInfo.email} onChange={handleChange} />
+          <OptionText>Sua mensagem</OptionText>
+          <TextArea id="message" value={messageInfo.message} onChange={handleChange} />
+          <ButtonWrapper>
+            <FormButton disabled={isFormInvalid}>ENVIAR</FormButton>
+          </ButtonWrapper>
+        </>
+      )
+        : (
+          <>
+            {submissionStatus === formStates.DONE
+              ? (
+                <ResultWrapper>
+                  <h1>Sua mensagem foi enviada com sucesso :D</h1>
+                  <h2>Obrigado por entrar em contato!</h2>
+                  <ButtonWrapper>
+                    <Lottie options={lottieOptionsSuccess} />
+                  </ButtonWrapper>
+                </ResultWrapper>
+              ) : (
+                <ResultWrapper>
+                  <h1>Algo deu errado :(</h1>
+                  <h2>Feche e tente novamente!</h2>
+                  <ButtonWrapper>
+                    <Lottie options={lottieOptionsError} />
+                  </ButtonWrapper>
+                </ResultWrapper>
+              )}
+          </>
         )}
-        {isFormSubmitted && submissionStatus === formStates.ERROR && (
-          <Lottie options={lottieOptionsError} />
-        )}
-        {!isFormSubmitted && <FormButton disabled={isFormInvalid}>ENVIAR</FormButton>}
-      </ButtonWrapper>
     </WrapperForm>
   );
 }
