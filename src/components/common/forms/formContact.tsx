@@ -113,7 +113,10 @@ export default function FormContact({ onClose, isOpen }: FormProps) {
   useEffect(() => {
     // Reset the form
     if (!isOpen) {
-      setFormSubmitted(isOpen);
+      // wait for the closing animation
+      setTimeout(() => {
+        setFormSubmitted(isOpen);
+      }, 500);
     }
   });
 
