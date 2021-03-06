@@ -74,6 +74,16 @@ const WrapperLinks = styled.div`
   float: right;
   display: flex;
   flex-direction: row-reverse;
+
+  ${breakpointsMedia({
+    xs: css`
+      padding-left: 0;
+    `,
+    md: css`
+      padding-left: 36px;
+    `,
+  })}
+  
 `;
 
 const LinkButton = styled.button`
