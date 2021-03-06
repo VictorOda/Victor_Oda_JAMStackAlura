@@ -14,16 +14,7 @@ const WrapperForm = styled.form`
   margin: auto;
   background: #fff;
   border: 2px solid #141517;
-
-  ${breakpointsMedia({
-    xs: css`
-      width: 100%;
-    `,
-    md: css`
-        max-width: 768px;
-        width: 60%;
-    `,
-  })}
+  width: 100%;
 `;
 
 const TextInput = styled.input`

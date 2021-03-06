@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { motion } from 'framer-motion';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 const ModalWrapper = styled.div<{ isOpen: boolean }>`
   display: flex;
@@ -47,6 +48,17 @@ const ModalContent = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  margin: auto;
+
+  ${breakpointsMedia({
+    xs: css`
+      width: 100%;
+    `,
+    md: css`
+        max-width: 768px;
+        width: 60%;
+    `,
+  })}
 `;
 
 export default function Modal({ isOpen, onClose, children }: ModalProps) {
