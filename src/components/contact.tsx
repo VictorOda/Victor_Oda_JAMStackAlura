@@ -65,6 +65,11 @@ const ContactButton = styled.button`
   outline: none;
   margin: 16px auto;
   width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 export default function Contact() {
