@@ -218,24 +218,29 @@ export default function FormContact({ onClose, isOpen }: FormProps) {
       )
         : (
           <>
-            {submissionStatus === formStates.DONE
+            {/* eslint-disable-next-line no-nested-ternary */}
+            {submissionStatus === formStates.DEFAULT
               ? (
                 <ResultWrapper>
-                  <h1>Sua mensagem foi enviada com sucesso :D</h1>
-                  <h2>Obrigado por entrar em contato!</h2>
-                  <ButtonWrapper>
-                    <Lottie options={lottieOptionsSuccess} />
-                  </ButtonWrapper>
+                  <h1>Sua mensagem está sendo enviada!</h1>
+                  <ButtonWrapper />
                 </ResultWrapper>
-              ) : (
-                <ResultWrapper>
-                  <h1>Algo deu errado :(</h1>
-                  <h2>Feche e tente novamente!</h2>
-                  <ButtonWrapper>
-                    <Lottie options={lottieOptionsError} />
-                  </ButtonWrapper>
-                </ResultWrapper>
-              )}
+              ) : submissionStatus === formStates.DONE
+                ? (
+                  <ResultWrapper>
+                    <h1>Sua mensagem foi enviada com sucesso :D</h1>
+                    <ButtonWrapper>
+                      <Lottie options={lottieOptionsSuccess} />
+                    </ButtonWrapper>
+                  </ResultWrapper>
+                ) : (
+                  <ResultWrapper>
+                    <h1>Algo deu errado :(</h1>
+                    <ButtonWrapper>
+                      <Lottie options={lottieOptionsError} />
+                    </ButtonWrapper>
+                  </ResultWrapper>
+                )}
           </>
         )}
     </WrapperForm>
