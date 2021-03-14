@@ -1,12 +1,16 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import breakpointsMedia from '../theme/utils/breakpointsMedia';
-import Link from './common/link';
+import Link from '../../src/components/common/link';
+import breakpointsMedia from '../../src/theme/utils/breakpointsMedia';
 
-const WrapperProjects = styled.div`
-  background-color: ${({ theme }) => theme.colors.lightTheme.background};
+const WrapperCover = styled.div`
+  background-color: ${({ theme }) => theme.colors.darkTheme.background};
   width: 100%;
-  min-height: 300px;
+  min-height: 100vh;
+  display: flex;
+  flex: wrap;
+  flex-direction: column;
+
   ${breakpointsMedia({
     xs: css`
       padding: 18px;
@@ -18,7 +22,7 @@ const WrapperProjects = styled.div`
 `;
 
 const SectionTitle = styled.span`
-  color: ${({ theme }) => theme.colors.lightTheme.mainText};
+  color: ${({ theme }) => theme.colors.darkTheme.secondaryText};
   ${breakpointsMedia({
     xs: css`
       font-size: ${({ theme }) => theme.typographyVariants.sectionTitleXS.fontSize};
@@ -31,8 +35,53 @@ const SectionTitle = styled.span`
   })}
 `;
 
+const WrapperTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
+
+const Name = styled.span` 
+  color: ${({ theme }) => theme.colors.darkTheme.mainText};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.nameXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.nameXS.fontWeight};
+      margin-left: 32px;
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.name.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.name.fontWeight};
+      margin-left: 124px;
+    `,
+  })}
+`;
+
+const Code = styled.span`
+  color: ${({ theme }) => theme.colors.darkTheme.mainText};
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.mediumXS.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.mediumXS.fontWeight};
+      margin-left: 32px;
+      margin-bottom: 18px;
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.medium.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.medium.fontWeight};
+      margin-left: 196px;
+      margin-bottom: 72px;
+    `,
+  })}
+`;
+
+const ColoredText = styled.span`
+  ${(prop) => `color: ${prop.color}`}
+`;
+
 const FeaturedProject = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.lightTheme.secondaryText};
+  background-color: ${({ theme }) => theme.colors.lightTheme.secondaryText};
   display: flex;
   
   ${breakpointsMedia({
@@ -90,16 +139,19 @@ const ProjectDescription = styled.p`
   color: ${({ theme }) => theme.colors.lightTheme.mainText};
 `;
 
-export default function Projects() {
+export default function FourOhFour() {
   return (
-    <WrapperProjects id="projects">
+    <WrapperCover>
       <SectionTitle>/projects</SectionTitle>
+      <WrapperTitle>
+        <Name>
+          Quiz Challenge
+        </Name>
+      </WrapperTitle>
       <FeaturedProject>
-        <Screenshot src="./images/quiz-screenshot.jpg" alt="quiz" />
+        <Screenshot src="../../images/quiz-screenshot.jpg" alt="quiz" />
         <Description>
-          <Link href="/projects/quiz-challenge">
-            <ProjectTitle>Quiz Challenge</ProjectTitle>
-          </Link>
+          <ProjectTitle href="https://1sec-quiz-pihprqx4c.vercel.app/">Quiz Challenge</ProjectTitle>
           <ProjectDescription>
             Quiz desenvolvido durante a imersão React+Next.js da Alura.
             O objetivo é tentar adivinhar de qual jogo é a música
@@ -107,6 +159,13 @@ export default function Projects() {
           </ProjectDescription>
         </Description>
       </FeaturedProject>
-    </WrapperProjects>
+      <Code>
+        <Link href="/">
+          &lt; Voltar para a
+          {' '}
+          <ColoredText color="#00C2DA">HOME</ColoredText>
+        </Link>
+      </Code>
+    </WrapperCover>
   );
 }
