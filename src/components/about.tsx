@@ -56,7 +56,6 @@ interface AboutProps {
 }
 
 export default function About({ repos }: AboutProps) {
-  console.log('repos', repos);
   return (
     <WrapperAbout id="about">
       <SectionTitle>/about</SectionTitle>
@@ -83,7 +82,6 @@ export default function About({ repos }: AboutProps) {
         <ul>
           {repos.map((repo) => (
             <li key={repo.name}>
-              {console.log(repo.html_url)}
               <a href={repo.html_url}>{repo.name}</a>
               <p>{repo.description}</p>
             </li>
