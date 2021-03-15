@@ -70,7 +70,7 @@ const Description = styled.div`
   padding: 36px;
 `;
 
-const ProjectTitle = styled.a`
+const ProjectTitle = styled.span`
   color: ${({ theme }) => theme.colors.lightTheme.highlight};
   ${breakpointsMedia({
     xs: css`

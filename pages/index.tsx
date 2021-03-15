@@ -28,7 +28,6 @@ export default function Home({ repos }: HomeProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('https://api.github.com/users/victoroda/repos');
   const repos: Repo[] = await res.json();
-  console.log('repos', repos);
 
   return {
     props: {
