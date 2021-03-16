@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "framer-motion": "^3.10.0",
+    "framer-motion": "^3.10.5",
     "next": "latest",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
