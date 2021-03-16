@@ -51,6 +51,32 @@ const Description = styled.span`
   })}
 `;
 
+const RepoList = styled.div`
+  width: 80%;
+  max-width: 1000px;
+  margin: auto;
+`;
+
+const RepoWrapper = styled.div`
+  margin: 8px 0;
+`;
+
+const RepoTitle = styled.a`
+  color: ${({ theme }) => theme.colors.highlightTheme.secondaryText};
+  margin-right: 4px;
+
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.smallCode.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.smallCode.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.smallCode.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.smallCode.fontWeight};
+    `,
+  })}
+`;
+
 interface AboutProps {
   repos: Repo[];
 }
@@ -78,16 +104,19 @@ export default function About({ repos }: AboutProps) {
         <a href="https://wuzu.io">Wuzu</a>
         ! Ajudando a equipe de desenvolvimento a criar diversos produtos para o mercado financeiro.
       </Description>
-      {repos && (
-        <ul>
-          {repos.map((repo) => (
-            <li key={repo.name}>
-              <a href={repo.html_url}>{repo.name}</a>
-              <p>{repo.description}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+      <RepoList>
+        <h1>Meus Repositórios</h1>
+        {repos.map((repo) => (
+          <RepoWrapper key={repo.name}>
+            <RepoTitle href={repo.html_url}>
+              {repo.name}
+              :
+              {' '}
+            </RepoTitle>
+            <span>{repo.description}</span>
+          </RepoWrapper>
+        ))}
+      </RepoList>
     </WrapperAbout>
   );
 }
