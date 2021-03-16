@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Link from '../../src/components/common/link';
 import breakpointsMedia from '../../src/theme/utils/breakpointsMedia';
+import db from '../../db.json';
 
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTheme.background};
@@ -139,23 +140,21 @@ const ProjectDescription = styled.p`
   color: ${({ theme }) => theme.colors.lightTheme.mainText};
 `;
 
-export default function FourOhFour() {
+export default function QuizChallenge() {
   return (
     <WrapperCover>
       <SectionTitle>/projects</SectionTitle>
       <WrapperTitle>
         <Name>
-          Quiz Challenge
+          {db.projects[0].title}
         </Name>
       </WrapperTitle>
       <FeaturedProject>
-        <Screenshot src="../../images/quiz-screenshot.jpg" alt="quiz" />
+        <Screenshot src={db.projects[0].image} alt="quiz" />
         <Description>
-          <ProjectTitle href="https://1sec-quiz-pihprqx4c.vercel.app/">Quiz Challenge</ProjectTitle>
+          <ProjectTitle href={db.projects[0].link}>{db.projects[0].title}</ProjectTitle>
           <ProjectDescription>
-            Quiz desenvolvido durante a imersão React+Next.js da Alura.
-            O objetivo é tentar adivinhar de qual jogo é a música
-            mas você só pode escutar 1 segundo dela!
+            {db.projects[0].description}
           </ProjectDescription>
         </Description>
       </FeaturedProject>
