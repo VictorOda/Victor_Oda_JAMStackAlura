@@ -77,6 +77,19 @@ const RepoTitle = styled.a`
   })}
 `;
 
+const RepoDescription = styled.span`
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.paragraph2.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.paragraph2.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
+    `,
+  })}
+`;
+
 interface AboutProps {
   repos: Repo[];
 }
@@ -113,7 +126,7 @@ export default function About({ repos }: AboutProps) {
               :
               {' '}
             </RepoTitle>
-            <span>{repo.description}</span>
+            <RepoDescription>{repo.description}</RepoDescription>
           </RepoWrapper>
         ))}
       </RepoList>
