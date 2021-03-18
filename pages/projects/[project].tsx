@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Link from '../../src/components/common/link';
@@ -141,21 +142,30 @@ const ProjectDescription = styled.p`
   color: ${({ theme }) => theme.colors.lightTheme.mainText};
 `;
 
-function QuizChallenge() {
+interface Props {
+  image?: string,
+  title?: string,
+  description?: string,
+  link?: string,
+}
+
+function ProjectPage({
+  image, title, description, link,
+}: Props) {
   return (
     <WrapperCover>
       <SectionTitle>/projects</SectionTitle>
       <WrapperTitle>
         <Name>
-          {db.projects[0].title}
+          {title}
         </Name>
       </WrapperTitle>
       <FeaturedProject>
-        <Screenshot src={db.projects[0].image} alt="quiz" />
+        <Screenshot src={image} alt="quiz" />
         <Description>
-          <ProjectTitle href={db.projects[0].link}>{db.projects[0].title}</ProjectTitle>
+          <ProjectTitle href={link}>{title}</ProjectTitle>
           <ProjectDescription>
-            {db.projects[0].description}
+            {description}
           </ProjectDescription>
         </Description>
       </FeaturedProject>
@@ -170,6 +180,38 @@ function QuizChallenge() {
   );
 }
 
-export default websitePageHOC(QuizChallenge, {
-  seoProps: { headTitle: 'Quiz Challenge' },
+export default websitePageHOC(ProjectPage, {
+  seoProps: { headTitle: 'Projetos' },
 });
+
+export async function getStaticProps({ params }) {
+  const selectedProject = db.projects.find((project) => {
+    if (project.project === params.project) {
+      return project;
+    }
+  });
+
+  return {
+    props: {
+      image: selectedProject.image,
+      title: selectedProject.title,
+      description: selectedProject.description,
+      link: selectedProject.link,
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = db.projects.reduce((projetosAcumulados, projeto) => {
+    console.log('project', projeto);
+    return [
+      ...projetosAcumulados,
+      { params: { project: projeto.project } },
+    ];
+  }, []);
+  console.log(paths);
+  return {
+    paths,
+    fallback: false,
+  };
+}
