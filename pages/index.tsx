@@ -7,12 +7,13 @@ import Footer from '../src/components/footer';
 import Header from '../src/components/header';
 import Projects from '../src/components/projects';
 import { Repo } from '../src/models/repo';
+import websitePageHOC from '../src/components/common/wrappers/hoc';
 
 interface HomeProps {
   repos: Repo[];
 }
 
-export default function Home({ repos }: HomeProps) {
+function Home({ repos }: HomeProps) {
   return (
     <div>
       <Cover />
@@ -35,3 +36,7 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
+
+export default websitePageHOC(Home, {
+  seoProps: { headTitle: 'Home' },
+});

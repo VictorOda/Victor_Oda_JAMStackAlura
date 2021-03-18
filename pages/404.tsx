@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTyped from 'react-typed';
 import styled, { css } from 'styled-components';
 import Link from '../src/components/common/link';
+import websitePageHOC from '../src/components/common/wrappers/hoc';
 import breakpointsMedia from '../src/theme/utils/breakpointsMedia';
 
 const WrapperCover = styled.div`
@@ -97,7 +98,7 @@ const ColoredText = styled.span`
   ${(prop) => `color: ${prop.color}`}
 `;
 
-export default function FourOhFour() {
+function FourOhFour() {
   const typedOptions = {
     typeSpeed: 50,
     backSpeed: 50,
@@ -125,3 +126,7 @@ export default function FourOhFour() {
     </WrapperCover>
   );
 }
+
+export default websitePageHOC(FourOhFour, {
+  seoProps: { headTitle: '404'},
+});

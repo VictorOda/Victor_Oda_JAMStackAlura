@@ -19,8 +19,6 @@ export default function SEO({ headTitle }: Props) {
       <meta name="title" content={title} />
       <meta name="description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!" />
 
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400;500;700;900&family=Fira+Sans:wght@400&display=swap" rel="stylesheet" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
