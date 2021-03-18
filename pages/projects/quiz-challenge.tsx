@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import Link from '../../src/components/common/link';
 import breakpointsMedia from '../../src/theme/utils/breakpointsMedia';
 import db from '../../db.json';
+import websitePageHOC from '../../src/components/common/wrappers/hoc';
 
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTheme.background};
@@ -140,7 +141,7 @@ const ProjectDescription = styled.p`
   color: ${({ theme }) => theme.colors.lightTheme.mainText};
 `;
 
-export default function QuizChallenge() {
+function QuizChallenge() {
   return (
     <WrapperCover>
       <SectionTitle>/projects</SectionTitle>
@@ -168,3 +169,7 @@ export default function QuizChallenge() {
     </WrapperCover>
   );
 }
+
+export default websitePageHOC(QuizChallenge, {
+  seoProps: { headTitle: 'Quiz Challenge' },
+});
