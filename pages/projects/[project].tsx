@@ -13,6 +13,7 @@ const WrapperCover = styled.div`
   display: flex;
   flex: wrap;
   flex-direction: column;
+  justify-content: space-between;
 
   ${breakpointsMedia({
     xs: css`
@@ -39,6 +40,7 @@ const SectionTitle = styled.span`
 `;
 
 const WrapperTitle = styled.div`
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -67,13 +69,11 @@ const Code = styled.span`
       font-size: ${({ theme }) => theme.typographyVariants.mediumXS.fontSize};
       font-weight: ${({ theme }) => theme.typographyVariants.mediumXS.fontWeight};
       margin-left: 32px;
-      margin-bottom: 18px;
     `,
     md: css`
       font-size: ${({ theme }) => theme.typographyVariants.medium.fontSize};
       font-weight: ${({ theme }) => theme.typographyVariants.medium.fontWeight};
-      margin-left: 196px;
-      margin-bottom: 72px;
+      margin-left: 124px;
     `,
   })}
 `;
@@ -83,8 +83,6 @@ const ColoredText = styled.span`
 `;
 
 const FeaturedProject = styled.div`
-  border: 2px solid ${({ theme }) => theme.colors.lightTheme.secondaryText};
-  background-color: ${({ theme }) => theme.colors.lightTheme.secondaryText};
   display: flex;
   
   ${breakpointsMedia({
@@ -122,7 +120,7 @@ const Description = styled.div`
   padding: 36px;
 `;
 
-const ProjectTitle = styled.a`
+const ProjectTitle = styled.h1`
   color: ${({ theme }) => theme.colors.lightTheme.highlight};
   ${breakpointsMedia({
     xs: css`
@@ -139,7 +137,19 @@ const ProjectTitle = styled.a`
 const ProjectDescription = styled.p`
   font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
   font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
-  color: ${({ theme }) => theme.colors.lightTheme.mainText};
+  color: ${({ theme }) => theme.colors.darkTheme.mainText};
+`;
+
+const ProjectCTA = styled.h3`
+  font-size: ${({ theme }) => theme.typographyVariants.mediumXS.fontSize};
+  font-weight: ${({ theme }) => theme.typographyVariants.name.fontWeight};
+  color: ${({ theme }) => theme.colors.darkTheme.secondaryText};
+`;
+
+const ProjectLink = styled.a`
+  font-size: ${({ theme }) => theme.typographyVariants.smallXS.fontSize};
+  font-weight: ${({ theme }) => theme.typographyVariants.smallXS.fontWeight};
+  color: ${({ theme }) => theme.colors.darkTheme.highlight};
 `;
 
 interface Props {
@@ -163,10 +173,12 @@ function ProjectPage({
       <FeaturedProject>
         <Screenshot src={image} alt="quiz" />
         <Description>
-          <ProjectTitle href={link}>{title}</ProjectTitle>
+          <ProjectTitle>{title}</ProjectTitle>
           <ProjectDescription>
             {description}
           </ProjectDescription>
+          <ProjectCTA>Visite o site</ProjectCTA>
+          <ProjectLink href={link}>{link}</ProjectLink>
         </Description>
       </FeaturedProject>
       <Code>
@@ -202,14 +214,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = db.projects.reduce((projetosAcumulados, projeto) => {
-    console.log('project', projeto);
-    return [
-      ...projetosAcumulados,
-      { params: { project: projeto.project } },
-    ];
-  }, []);
-  console.log(paths);
+  const paths = db.projects.reduce((projetosAcumulados, projeto) => [
+    ...projetosAcumulados,
+    { params: { project: projeto.project } },
+  ], []);
   return {
     paths,
     fallback: false,
