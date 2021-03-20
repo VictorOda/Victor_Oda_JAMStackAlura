@@ -1,0 +1,11 @@
+{
+  "projects": [
+    {
+      "project": "quiz-challenge",
+      "image": "/images/quiz-screenshot.jpg",
+      "title": "Quiz Challenge",
+      "description": " Quiz desenvolvido durante a imersão React+Next.js da Alura. O objetivo é tentar adivinhar de qual jogo é a música mas você só pode escutar 1 segundo dela!",
+      "link": "https://1sec-quiz-pihprqx4c.vercel.app/"
+    }
+  ]
+}

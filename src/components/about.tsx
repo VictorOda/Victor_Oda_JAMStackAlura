@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
+import { Repo } from '../models/repo';
 
 const WrapperAbout = styled.div`
   background-color: ${({ theme }) => theme.colors.highlightTheme.background};
@@ -49,7 +51,50 @@ const Description = styled.span`
   })}
 `;
 
-export default function About() {
+const RepoList = styled.div`
+  width: 80%;
+  max-width: 1000px;
+  margin: auto;
+`;
+
+const RepoWrapper = styled.div`
+  margin: 8px 0;
+`;
+
+const RepoTitle = styled.a`
+  color: ${({ theme }) => theme.colors.highlightTheme.secondaryText};
+  margin-right: 4px;
+
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.smallCode.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.smallCode.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.smallCode.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.smallCode.fontWeight};
+    `,
+  })}
+`;
+
+const RepoDescription = styled.span`
+  ${breakpointsMedia({
+    xs: css`
+      font-size: ${({ theme }) => theme.typographyVariants.paragraph2.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.paragraph2.fontWeight};
+    `,
+    md: css`
+      font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+      font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
+    `,
+  })}
+`;
+
+interface AboutProps {
+  repos: Repo[];
+}
+
+export default function About({ repos }: AboutProps) {
   return (
     <WrapperAbout id="about">
       <SectionTitle>/about</SectionTitle>
@@ -72,6 +117,19 @@ export default function About() {
         <a href="https://wuzu.io">Wuzu</a>
         ! Ajudando a equipe de desenvolvimento a criar diversos produtos para o mercado financeiro.
       </Description>
+      <RepoList>
+        <h1>Meus Repositórios</h1>
+        {repos.map((repo) => (
+          <RepoWrapper key={repo.name}>
+            <RepoTitle href={repo.html_url}>
+              {repo.name}
+              :
+              {' '}
+            </RepoTitle>
+            <RepoDescription>{repo.description}</RepoDescription>
+          </RepoWrapper>
+        ))}
+      </RepoList>
     </WrapperAbout>
   );
 }
