@@ -128,5 +128,5 @@ function FourOhFour() {
 }
 
 export default websitePageHOC(FourOhFour, {
-  seoProps: { headTitle: '404'},
+  seoProps: { headTitle: '404' },
 });
