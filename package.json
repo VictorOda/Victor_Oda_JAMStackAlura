@@ -13,6 +13,9 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/react-hooks": "^5.1.0",
     "@types/jest": "^26.0.22",
     "cypress": "^6.8.0",
     "eslint-plugin-cypress": "^2.11.2",
@@ -20,6 +23,8 @@
     "font-awesome": "^4.7.0",
     "framer-motion": "^3.10.0",
     "jest": "^26.6.3",
+    "jest-canvas-mock": "^2.3.1",
+    "jest-styled-components": "^7.0.3",
     "lodash": "^4.17.21",
     "next": "latest",
     "react": "^16.8.0",
