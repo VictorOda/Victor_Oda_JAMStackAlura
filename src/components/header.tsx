@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
-import MoveToPosition from '../theme/utils/moveToElement';
+import MoveToPosition from '../theme/utils/moveToElement/moveToElement';
 
 const WrapperHeader = styled.section`
   width: 100%;

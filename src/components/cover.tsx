@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import Lottie from 'react-lottie';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
 import arrowAnimation from '../lotties/arrow.json';
-import MoveToPosition from '../theme/utils/moveToElement';
+import MoveToPosition from '../theme/utils/moveToElement/moveToElement';
 
 const WrapperCover = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTheme.background};
