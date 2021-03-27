@@ -77,9 +77,10 @@ export default function Contact() {
   return (
     <WrapperContact id="contact">
       <SectionTitle>/contact</SectionTitle>
-      <ContactInfo>
+      <ContactInfo id="contactInfo">
         APERTA AQUI!
         <ContactButton
+          name="contact"
           color="#00C2DA"
           onClick={() => setModalOpen(!isOpen)}
         >

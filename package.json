@@ -6,12 +6,16 @@
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "commit": "cz",
+    "test:integration:open": "cypress open"
   },
   "dependencies": {
+    "cypress": "^6.8.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.21",
     "framer-motion": "^3.10.0",
+    "lodash": "^4.17.21",
     "next": "latest",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
