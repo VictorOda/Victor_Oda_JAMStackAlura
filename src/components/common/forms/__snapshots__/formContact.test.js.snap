@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormContact /> renderiza componente 1`] = `
+.c0 {
+  width: 90%;
+  margin: auto;
+  height: 32px;
+  padding: 8px;
+}
+
+@media screen and (min-width:0px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<input
+  class="c0"
+  id="name"
+  placeholder="Seu nome aqui"
+  type="text"
+  value=""
+/>
+`;
