@@ -16,7 +16,6 @@ describe('<FormContact />', () => {
         isOpen
       />,
     );
-    screen.debug();
     const textInput = screen.getByPlaceholderText(/Seu nome aqui/i);
     expect(textInput).toMatchSnapshot();
   });
