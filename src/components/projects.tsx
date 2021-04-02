@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../theme/utils/breakpointsMedia';
-import Link from './common/link';
+import Link from './common/link/link';
 
 const WrapperProjects = styled.div`
   background-color: ${({ theme }) => theme.colors.lightTheme.background};

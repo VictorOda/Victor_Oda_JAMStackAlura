@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Link from '../../src/components/common/link';
+import Link from '../../src/components/common/link/link';
 import breakpointsMedia from '../../src/theme/utils/breakpointsMedia';
 import db from '../../db.json';
 import websitePageHOC from '../../src/components/common/wrappers/hoc';
