@@ -219,7 +219,7 @@ export default function FormContact({ onClose, isOpen }: FormProps) {
           <OptionText>Sua mensagem</OptionText>
           <TextArea id="message" value={messageInfo.message} onChange={handleChange} placeholder="Pode escrever qualquer coisa" />
           <ButtonWrapper>
-            <FormButton disabled={isFormInvalid}>ENVIAR</FormButton>
+            <FormButton id="contactBtn" disabled={isFormInvalid}>ENVIAR</FormButton>
           </ButtonWrapper>
         </>
       )

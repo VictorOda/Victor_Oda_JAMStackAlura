@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormContact /> renderiza componente 1`] = `
+.c0 {
+  color: inherit;
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  opacity: 1;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.c0:hover,
+.c0:focus {
+  opacity: .5;
+}
+
+<a
+  class="c0"
+  href="/projects/quiz-challenge"
+>
+  test
+</a>
+`;

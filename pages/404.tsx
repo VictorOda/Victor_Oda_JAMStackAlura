@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTyped from 'react-typed';
 import styled, { css } from 'styled-components';
-import Link from '../src/components/common/link';
+import Link from '../src/components/common/link/link';
 import websitePageHOC from '../src/components/common/wrappers/hoc';
 import breakpointsMedia from '../src/theme/utils/breakpointsMedia';
 
@@ -128,5 +128,5 @@ function FourOhFour() {
 }
 
 export default websitePageHOC(FourOhFour, {
-  seoProps: { headTitle: '404'},
+  seoProps: { headTitle: '404' },
 });
