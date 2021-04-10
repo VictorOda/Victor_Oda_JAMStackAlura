@@ -1,6 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { GraphQLClient, gql } from 'graphql-request';
 import Link from '../../src/components/common/link/link';
 import breakpointsMedia from '../../src/theme/utils/breakpointsMedia';
 import db from '../../db.json';
@@ -153,15 +154,16 @@ const ProjectLink = styled.a`
 `;
 
 interface Props {
-  image?: string,
-  title?: string,
-  description?: string,
-  link?: string,
+  title: string,
+  description: string,
+  projectUrl: string,
+  image: string,
 }
 
 function ProjectPage({
-  image, title, description, link,
+  title, description, projectUrl, image,
 }: Props) {
+  console.log(title);
   return (
     <WrapperCover>
       <SectionTitle>/projects</SectionTitle>
@@ -178,7 +180,7 @@ function ProjectPage({
             {description}
           </ProjectDescription>
           <ProjectCTA>Visite o site</ProjectCTA>
-          <ProjectLink href={link}>{link}</ProjectLink>
+          <ProjectLink href={projectUrl}>{projectUrl}</ProjectLink>
         </Description>
       </FeaturedProject>
       <Code>
@@ -197,26 +199,69 @@ export default websitePageHOC(ProjectPage, {
 });
 
 export async function getStaticProps({ params }) {
-  const selectedProject = db.projects.find((project) => {
-    if (project.project === params.project) {
+  const TOKEN = '8f012695cfe40164988127d554aadf';
+  const DatoCMSURL = 'https://graphql.datocms.com/';
+  const client = new GraphQLClient(DatoCMSURL, {
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  const query = gql`
+    query {
+      allProjects {
+        title
+        description
+        projectUrl
+        image {
+          id
+        }
+      }
+    }
+  `;
+  const projects = await client.request(query);
+
+  const selectedProject = projects.allProjects.find((project) => {
+    if (project.slug === params.project) {
       return project;
     }
+    return {};
   });
-
+  console.log('Selected', selectedProject);
   return {
     props: {
-      image: selectedProject.image,
       title: selectedProject.title,
       description: selectedProject.description,
-      link: selectedProject.link,
+      projectUrl: selectedProject.projectUrl,
+      image: selectedProject.image.id,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const paths = db.projects.reduce((projetosAcumulados, projeto) => [
+  const TOKEN = '8f012695cfe40164988127d554aadf';
+  const DatoCMSURL = 'https://graphql.datocms.com/';
+  const client = new GraphQLClient(DatoCMSURL, {
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  const query = gql`
+    query {
+      allProjects {
+        title
+        description
+        projectUrl
+        slug
+        image {
+          id
+        }
+      }
+    }
+  `;
+  const projects = await client.request(query);
+  const paths = projects.allProjects.reduce((projetosAcumulados, projeto) => [
     ...projetosAcumulados,
-    { params: { project: projeto.project } },
+    { params: { project: projeto.slug } },
   ], []);
   return {
     paths,
