@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { GraphQLClient, gql } from 'graphql-request';
 import Link from '../../src/components/common/link/link';
 import breakpointsMedia from '../../src/theme/utils/breakpointsMedia';
-import db from '../../db.json';
 import websitePageHOC from '../../src/components/common/wrappers/hoc';
 
 const WrapperCover = styled.div`
