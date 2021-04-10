@@ -1,9 +1,9 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { GraphQLClient, gql } from 'graphql-request';
 import Link from '../../src/components/common/link/link';
 import breakpointsMedia from '../../src/theme/utils/breakpointsMedia';
-import db from '../../db.json';
 import websitePageHOC from '../../src/components/common/wrappers/hoc';
 
 const WrapperCover = styled.div`
@@ -134,7 +134,7 @@ const ProjectTitle = styled.h1`
   })}
 `;
 
-const ProjectDescription = styled.p`
+const ProjectDescription = styled.div`
   font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
   font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
   color: ${({ theme }) => theme.colors.darkTheme.mainText};
@@ -153,14 +153,14 @@ const ProjectLink = styled.a`
 `;
 
 interface Props {
-  image?: string,
-  title?: string,
-  description?: string,
-  link?: string,
+  title: string,
+  description: string,
+  projectUrl: string,
+  image: string,
 }
 
 function ProjectPage({
-  image, title, description, link,
+  title, description, projectUrl, image,
 }: Props) {
   return (
     <WrapperCover>
@@ -174,11 +174,13 @@ function ProjectPage({
         <Screenshot src={image} alt="quiz" />
         <Description>
           <ProjectTitle>{title}</ProjectTitle>
-          <ProjectDescription>
-            {description}
-          </ProjectDescription>
+          <ProjectDescription
+            dangerouslySetInnerHTML={{
+              __html: description,
+            }}
+          />
           <ProjectCTA>Visite o site</ProjectCTA>
-          <ProjectLink href={link}>{link}</ProjectLink>
+          <ProjectLink href={projectUrl}>{projectUrl}</ProjectLink>
         </Description>
       </FeaturedProject>
       <Code>
@@ -197,27 +199,66 @@ export default websitePageHOC(ProjectPage, {
 });
 
 export async function getStaticProps({ params }) {
-  const selectedProject = db.projects.find((project) => {
-    if (project.project === params.project) {
-      return project;
-    }
+  const TOKEN = process.env.DATO_CMS_TOKEN;
+  const DatoCMSURL = 'https://graphql.datocms.com/';
+  const client = new GraphQLClient(DatoCMSURL, {
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
   });
+  const query = gql`
+    query {
+      allProjects {
+        title
+        description
+        projectUrl
+        slug
+        image {
+          url
+        }
+      }
+    }
+  `;
+  const projects = await client.request(query);
+  const selectedProject = projects.allProjects.find((project) => project.slug === params.project);
 
   return {
     props: {
-      image: selectedProject.image,
       title: selectedProject.title,
       description: selectedProject.description,
-      link: selectedProject.link,
+      projectUrl: selectedProject.projectUrl,
+      image: selectedProject.image.url,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const paths = db.projects.reduce((projetosAcumulados, projeto) => [
+  const TOKEN = process.env.DATO_CMS_TOKEN;
+  const DatoCMSURL = 'https://graphql.datocms.com/';
+  const client = new GraphQLClient(DatoCMSURL, {
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  const query = gql`
+    query {
+      allProjects {
+        title
+        description
+        projectUrl
+        slug
+        image {
+          url
+        }
+      }
+    }
+  `;
+  const projects = await client.request(query);
+  const paths = projects.allProjects.reduce((projetosAcumulados, projeto) => [
     ...projetosAcumulados,
-    { params: { project: projeto.project } },
+    { params: { project: projeto.slug } },
   ], []);
+
   return {
     paths,
     fallback: false,
