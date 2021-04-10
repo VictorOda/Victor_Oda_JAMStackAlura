@@ -163,7 +163,6 @@ interface Props {
 function ProjectPage({
   title, description, projectUrl, image,
 }: Props) {
-  console.log(title);
   return (
     <WrapperCover>
       <SectionTitle>/projects</SectionTitle>
@@ -213,7 +212,7 @@ export async function getStaticProps({ params }) {
         description
         projectUrl
         image {
-          id
+          url
         }
       }
     }
@@ -226,13 +225,13 @@ export async function getStaticProps({ params }) {
     }
     return {};
   });
-  console.log('Selected', selectedProject);
+
   return {
     props: {
       title: selectedProject.title,
       description: selectedProject.description,
       projectUrl: selectedProject.projectUrl,
-      image: selectedProject.image.id,
+      image: selectedProject.image.url,
     },
   };
 }
@@ -253,7 +252,7 @@ export async function getStaticPaths() {
         projectUrl
         slug
         image {
-          id
+          url
         }
       }
     }
