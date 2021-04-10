@@ -135,7 +135,7 @@ const ProjectTitle = styled.h1`
   })}
 `;
 
-const ProjectDescription = styled.p`
+const ProjectDescription = styled.div`
   font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
   font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
   color: ${({ theme }) => theme.colors.darkTheme.mainText};
@@ -175,9 +175,11 @@ function ProjectPage({
         <Screenshot src={image} alt="quiz" />
         <Description>
           <ProjectTitle>{title}</ProjectTitle>
-          <ProjectDescription>
-            {description}
-          </ProjectDescription>
+          <ProjectDescription
+            dangerouslySetInnerHTML={{
+              __html: description,
+            }}
+          />
           <ProjectCTA>Visite o site</ProjectCTA>
           <ProjectLink href={projectUrl}>{projectUrl}</ProjectLink>
         </Description>
