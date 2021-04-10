@@ -211,6 +211,7 @@ export async function getStaticProps({ params }) {
         title
         description
         projectUrl
+        slug
         image {
           url
         }
@@ -218,13 +219,7 @@ export async function getStaticProps({ params }) {
     }
   `;
   const projects = await client.request(query);
-
-  const selectedProject = projects.allProjects.find((project) => {
-    if (project.slug === params.project) {
-      return project;
-    }
-    return {};
-  });
+  const selectedProject = projects.allProjects.find((project) => project.slug === params.project);
 
   return {
     props: {
@@ -262,6 +257,7 @@ export async function getStaticPaths() {
     ...projetosAcumulados,
     { params: { project: projeto.slug } },
   ], []);
+
   return {
     paths,
     fallback: false,
