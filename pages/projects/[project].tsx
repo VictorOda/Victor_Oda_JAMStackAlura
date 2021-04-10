@@ -200,7 +200,7 @@ export default websitePageHOC(ProjectPage, {
 });
 
 export async function getStaticProps({ params }) {
-  const TOKEN = '8f012695cfe40164988127d554aadf';
+  const TOKEN = process.env.DATO_CMS_TOKEN;
   const DatoCMSURL = 'https://graphql.datocms.com/';
   const client = new GraphQLClient(DatoCMSURL, {
     headers: {
@@ -234,7 +234,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const TOKEN = '8f012695cfe40164988127d554aadf';
+  const TOKEN = process.env.DATO_CMS_TOKEN;
   const DatoCMSURL = 'https://graphql.datocms.com/';
   const client = new GraphQLClient(DatoCMSURL, {
     headers: {
